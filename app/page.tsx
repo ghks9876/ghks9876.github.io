@@ -379,13 +379,13 @@ export default function Home() {
               </p>
             </header>
 
-            <div
-              className="profile-photo profile-placeholder"
-              role="img"
-              aria-label="Profile photo placeholder for Jeonghwan Kim"
-            >
-              <span aria-hidden="true">JK</span>
-            </div>
+            {/* Preserve the reference template's plain profile image element. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="profile-photo"
+              src="/images/profile.png"
+              alt="Portrait of Jeonghwan Kim"
+            />
 
             <ul className="contact-list">
               <li>
