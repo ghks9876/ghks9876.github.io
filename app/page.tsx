@@ -6,7 +6,7 @@ type RecordItem = {
   detail: string;
   href?: string;
   linkLabel?: string;
-  note?: string;
+  highlight?: string;
 };
 
 type RecordGroup = {
@@ -17,7 +17,7 @@ type RecordGroup = {
 const researchInterests = [
   "LEO satellite networks and space edge computing",
   "Joint communication, computation, and multi-hop routing",
-  "Battery-aware network optimization and deep reinforcement learning",
+  "Battery-lifetime-aware resource management and network optimization",
   "Network-compute load balancing for connected and autonomous vehicles",
 ];
 
@@ -46,7 +46,6 @@ const publicationGroups: RecordGroup[] = [
         title:
           "BLADE: Battery-Lifespan-Aware Joint Routing and In-Orbit Processing in Dynamic LEO Constellations",
         detail: "Manuscript submitted to an IEEE Transactions journal, 2026.",
-        note: "Under review",
       },
     ],
   },
@@ -61,7 +60,7 @@ const publicationGroups: RecordGroup[] = [
         detail: "IEEE Communications Magazine, vol. 63, no. 6, pp. 146–153, June 2025.",
         href: "https://doi.org/10.1109/MCOM.003.2400432",
         linkLabel: "DOI",
-        note: "JCR Top 5.5%",
+        highlight: "(IF: 8.3, JCR Top 5.5% in Telecommunications).",
       },
       {
         authors: "Jeonghwan Kim; Jeongho Kwak",
@@ -70,7 +69,8 @@ const publicationGroups: RecordGroup[] = [
         detail: "ICT Express, vol. 10, no. 6, pp. 1212–1219, December 2024.",
         href: "https://doi.org/10.1016/j.icte.2024.09.014",
         linkLabel: "DOI",
-        note: "JCR Top 23%",
+        highlight:
+          "(2024 JCR: IF 4.2, Top 23% in Computer Science, Information Systems).",
       },
     ],
   },
@@ -95,7 +95,7 @@ const publicationGroups: RecordGroup[] = [
         title:
           "Interchangeable CPU-GPU DVFS for Encoding vs. Inference in LEO Satellite Onboard Processing",
         detail: "IEEE/IFIP NOMS, Rome, Italy, pp. 1–10, May 2026.",
-        note: "BK21+",
+        highlight: "(BK21+ Outstanding International Conference).",
       },
       {
         authors:
@@ -111,7 +111,6 @@ const publicationGroups: RecordGroup[] = [
         title:
           "SatAware: Real-Time Hardware-Aware Scheduling for Robust LEO Satellite Networks",
         detail: "ICSANE / IEICE Technical Report, vol. 125, no. 245, pp. 91–93, 2025.",
-        note: "Technical Report",
       },
       {
         authors:
@@ -299,8 +298,8 @@ const serviceGroups = [
   {
     label: "Journals",
     venues: [
-      "IEEE Internet of Things Journal",
-      "IEEE Transactions on Network Science and Engineering",
+      "IEEE Internet of Things Journal (IoTJ)",
+      "IEEE Transactions on Network Science and Engineering (TNSE)",
       "The Journal of Korean Institute of Communications and Information Sciences (J-KICS)",
     ],
   },
@@ -314,8 +313,10 @@ const serviceGroups = [
 ];
 
 const skills = [
-  "Python, MATLAB",
-  "Deep Reinforcement Learning, Network Optimization, and Simulation",
+  "TLE-based dynamic LEO constellation and satellite edge-computing simulator development (Python, MATLAB)",
+  "Joint communication–computation–routing optimization, including queue and battery-lifetime awareness",
+  "Deep reinforcement learning for structured network control and resource allocation",
+  "Integrated network–compute and heterogeneous V2X simulator development for connected and autonomous vehicles",
 ];
 
 function highlightName(text: string) {
@@ -338,9 +339,10 @@ function RecordList({ items }: { items: RecordItem[] }) {
         <li key={`${item.title}-${item.detail}`}>
           {item.authors && <>{highlightName(item.authors)}, </>}
           &ldquo;{item.title},&rdquo; {item.detail}
-          {item.note && (
+          {item.highlight && (
             <>
-              {" "}(<span className="venue-accent">{item.note}</span>)
+              {" "}
+              <span className="venue-accent">{item.highlight}</span>
             </>
           )}
           {item.href && (
@@ -412,9 +414,10 @@ export default function Home() {
               Jeonghwan Kim is an Integrated M.S. &amp; Ph.D. student at DGIST,
               advised by Prof. Jeongho Kwak (DGIST / Korea University) in the
               Intelligent Computing &amp; Networking Laboratory. His research
-              focuses on LEO satellite edge computing, battery-aware network
-              optimization, deep reinforcement learning, and network-compute
-              load balancing for connected and autonomous vehicles.
+              focuses on intelligent LEO satellite networks and onboard edge
+              computing, with an emphasis on joint communication, computation,
+              and routing optimization for battery-aware resource management
+              and connected autonomous vehicles.
             </p>
 
             <section id="education">
@@ -451,7 +454,7 @@ export default function Home() {
               </header>
               <ul className="item-list">
                 <li>
-                  Korea Government Full Scholarship (eight consecutive
+                  Korea Government Full Scholarship (8 consecutive
                   undergraduate semesters).
                 </li>
               </ul>
