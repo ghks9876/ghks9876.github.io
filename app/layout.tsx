@@ -19,7 +19,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/css/main.css" />
         <link
           rel="stylesheet"
-          href="/assets/css/custom.css?v=20260826-red-accent"
+          href="/assets/css/custom.css?v=20260826-soft-red"
         />
       </head>
       <body className="no-sidebar">{children}</body>
