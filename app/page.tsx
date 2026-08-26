@@ -313,10 +313,9 @@ const serviceGroups = [
 ];
 
 const skills = [
-  "TLE-based dynamic LEO constellation and satellite edge-computing simulator development (Python, MATLAB)",
-  "Joint communication–computation–routing optimization, including queue and battery-lifetime awareness",
-  "Deep reinforcement learning for structured network control and resource allocation",
-  "Integrated network–compute and heterogeneous V2X simulator development for connected and autonomous vehicles",
+  "Programming & Simulation: Python, MATLAB, TLE-based LEO and V2X simulation",
+  "Network Optimization: Communication–computation–routing, queue and battery awareness",
+  "Machine Learning: Deep reinforcement learning for network control",
 ];
 
 function highlightName(text: string) {
@@ -385,7 +384,7 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className="profile-photo"
-              src="/images/profile.png"
+              src="/images/profile-250402.png"
               alt="Portrait of Jeonghwan Kim"
             />
 
