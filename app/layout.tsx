@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-css-tags */
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -14,7 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <head>
+        <link rel="stylesheet" href="/assets/css/main.css" />
+        <link rel="stylesheet" href="/assets/css/custom.css" />
+      </head>
+      <body className="no-sidebar">{children}</body>
     </html>
   );
 }

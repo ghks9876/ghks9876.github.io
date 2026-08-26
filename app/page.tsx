@@ -272,20 +272,20 @@ const projects = [
   },
   {
     title:
-      "저궤도 군집 위성 통합 온보드 프로세싱-멀티홉 라우팅 알고리즘 개발 및 성능 분석",
-    agency: "ETRI",
-    period: "July 2025 – November 2025",
-  },
-  {
-    title:
       "6G 초공간 네트워크 연구센터: 초고속 이동체 지원을 위한 3D-NET 핵심 기술 개발",
     agency: "IITP",
     period: "April 2022 – December 2025",
   },
   {
+    title:
+      "저궤도 군집 위성 통합 온보드 프로세싱-멀티홉 라우팅 알고리즘 개발 및 성능 분석",
+    agency: "ETRI",
+    period: "July 2025 – November 2025",
+  },
+  {
     title: "다중 통신기술 네트워크 로드밸런싱 기술 개발",
     agency: "IITP",
-    period: "Research participation: 2024",
+    period: "April 2022 – December 2024 (participated in 2024)",
   },
   {
     title:
@@ -314,10 +314,8 @@ const serviceGroups = [
 ];
 
 const skills = [
-  "Python",
-  "MATLAB",
-  "Deep Reinforcement Learning",
-  "Network Optimization & Simulation",
+  "Python, MATLAB",
+  "Deep Reinforcement Learning, Network Optimization, and Simulation",
 ];
 
 function highlightName(text: string) {
@@ -335,19 +333,23 @@ function highlightName(text: string) {
 
 function RecordList({ items }: { items: RecordItem[] }) {
   return (
-    <ol className="record-list">
+    <ol className="pub-list">
       {items.map((item) => (
         <li key={`${item.title}-${item.detail}`}>
-          {item.authors && <p className="record-authors">{highlightName(item.authors)}</p>}
-          <h4>{item.title}</h4>
-          <p className="record-detail">
-            {item.detail}
-            {item.note && <span className="record-note">{item.note}</span>}
-          </p>
+          {item.authors && <>{highlightName(item.authors)}, </>}
+          &ldquo;{item.title},&rdquo; {item.detail}
+          {item.note && (
+            <>
+              {" "}(<span className="venue-accent">{item.note}</span>)
+            </>
+          )}
           {item.href && (
-            <a className="record-link" href={item.href} target="_blank" rel="noreferrer">
-              {item.linkLabel ?? "View record"} <span aria-hidden="true">↗</span>
-            </a>
+            <>
+              {" "}
+              <a href={item.href} target="_blank" rel="noreferrer">
+                [{item.linkLabel ?? "View record"}]
+              </a>
+            </>
           )}
         </li>
       ))}
@@ -357,227 +359,220 @@ function RecordList({ items }: { items: RecordItem[] }) {
 
 export default function Home() {
   return (
-    <main>
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="Jeonghwan Kim, home">
-          <span className="brand-mark">JK</span>
-          <span>Jeonghwan Kim</span>
-        </a>
-        <nav aria-label="Primary navigation">
-          <a href="#about">About</a>
-          <a href="#research">Research</a>
-          <a href="#publications">Publications</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </header>
+    <div id="page-wrapper">
+      <section id="header">
+        <h1>
+          <a href="#page-wrapper">Jeonghwan Kim</a>
+        </h1>
+      </section>
 
-      <section className="hero" id="top">
-        <div className="hero-copy">
-          <p className="eyebrow">Satellite edge intelligence · Network optimization</p>
-          <h1>
-            Jeonghwan Kim
-            <span>김정환</span>
-          </h1>
-          <p className="hero-role">
-            Integrated M.S.-Ph.D. Student in Electrical Engineering &amp;
-            Computer Science at DGIST
-          </p>
-          <div className="profile-links" aria-label="Research profiles">
-            {profileLinks.map((link) => (
-              <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
-                {link.label}
-                <span aria-hidden="true">↗</span>
-              </a>
-            ))}
-          </div>
-        </div>
-        <div className="portrait-placeholder" aria-label="Jeonghwan Kim initials">
-          <span>JK</span>
+      <section id="main">
+        <div className="container">
+          <article className="box post">
+            <header>
+              <h2>Jeonghwan Kim</h2>
+              <p>
+                <b>
+                  Integrated M.S. &amp; Ph.D. Student, DGIST / ICNL, Korea
+                  University
+                </b>
+              </p>
+            </header>
+
+            <div
+              className="profile-photo profile-placeholder"
+              role="img"
+              aria-label="Profile photo placeholder for Jeonghwan Kim"
+            >
+              <span aria-hidden="true">JK</span>
+            </div>
+
+            <ul className="contact-list">
+              <li>
+                Email:{" "}
+                <a href="mailto:ghks9876@dgist.ac.kr">ghks9876@dgist.ac.kr</a>
+              </li>
+              <li>
+                {profileLinks.map((link, index) => (
+                  <Fragment key={link.label}>
+                    {index > 0 && <b> | </b>}
+                    <a href={link.href} target="_blank" rel="noreferrer">
+                      [{link.label}]
+                    </a>
+                  </Fragment>
+                ))}
+              </li>
+              <li>
+                No. 507B, Woojung Hall of Informatics, Korea University, 145
+                Anam-ro, Seongbuk-gu, Seoul, South Korea
+              </li>
+            </ul>
+
+            <p id="about">
+              Jeonghwan Kim is an Integrated M.S. &amp; Ph.D. student at DGIST,
+              advised by Prof. Jeongho Kwak (DGIST / Korea University) in the
+              Intelligent Computing &amp; Networking Laboratory. His research
+              focuses on LEO satellite edge computing, battery-aware network
+              optimization, deep reinforcement learning, and network-compute
+              load balancing for connected and autonomous vehicles.
+            </p>
+
+            <section id="education">
+              <header>
+                <h3>Education</h3>
+              </header>
+              <ul className="item-list">
+                <li>
+                  Integrated M.S. &amp; Ph.D. Program, Electrical Engineering
+                  &amp; Computer Science, DGIST. Advisor: Prof. Jeongho Kwak
+                  (DGIST / Korea University). March 2022 &ndash; Present.
+                </li>
+                <li>
+                  B.S., Daegu Gyeongbuk Institute of Science &amp; Technology
+                  (DGIST). March 2017 &ndash; February 2022.
+                </li>
+              </ul>
+            </section>
+
+            <section id="research">
+              <header>
+                <h3>Research Interests</h3>
+              </header>
+              <ul className="item-list">
+                {researchInterests.map((interest) => (
+                  <li key={interest}>{interest}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section id="honors">
+              <header>
+                <h3>Honors</h3>
+              </header>
+              <ul className="item-list">
+                <li>
+                  Korea Government Full Scholarship (eight consecutive
+                  undergraduate semesters).
+                </li>
+              </ul>
+            </section>
+
+            <section id="publications">
+              <header>
+                <h3>Publications</h3>
+              </header>
+
+              {publicationGroups.map((group) => (
+                <Fragment key={group.label}>
+                  <p className="subhead">{group.label}</p>
+                  <RecordList items={group.items} />
+                </Fragment>
+              ))}
+
+              {patentGroups.map((group) => (
+                <Fragment key={group.label}>
+                  <p className="subhead">{group.label}</p>
+                  <RecordList items={group.items} />
+                </Fragment>
+              ))}
+
+              <p className="subhead">Software Registration</p>
+              <ul className="item-list">
+                {softwareItems.map((item) => (
+                  <li key={`${item.title}-${item.detail}`}>
+                    {item.authors && <>{highlightName(item.authors)}, </>}
+                    &ldquo;{item.title},&rdquo; {item.detail}
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section id="projects">
+              <header>
+                <h3>Projects</h3>
+              </header>
+              <ul className="item-list">
+                {projects.map((project) => (
+                  <li key={project.title} lang="ko">
+                    {project.title}, {project.agency}, Researcher, {project.period}.
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section id="service">
+              <header>
+                <h3>Professional Service</h3>
+              </header>
+              <ul className="item-list">
+                {serviceGroups.map((group) => (
+                  <li key={group.label}>
+                    {group.label === "Journals"
+                      ? "Journal reviewer"
+                      : "Conference reviewer"}
+                    : {group.venues.join("; ")}.
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section id="skills">
+              <header>
+                <h3>Skills</h3>
+              </header>
+              <ul className="item-list">
+                {skills.map((skill) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section id="contact">
+              <header>
+                <h3>Contact</h3>
+              </header>
+              <ul className="item-list">
+                <li>
+                  Email:{" "}
+                  <a href="mailto:ghks9876@dgist.ac.kr">
+                    ghks9876@dgist.ac.kr
+                  </a>
+                </li>
+                <li>
+                  Office: No. 507B, Woojung Hall of Informatics, Korea University
+                </li>
+                <li>
+                  {profileLinks.map((link, index) => (
+                    <Fragment key={link.label}>
+                      {index > 0 && <> &middot; </>}
+                      <a href={link.href} target="_blank" rel="noreferrer">
+                        {link.label}
+                      </a>
+                    </Fragment>
+                  ))}
+                </li>
+              </ul>
+            </section>
+          </article>
         </div>
       </section>
 
-      <div className="page-shell">
-        <section className="section-grid" id="about">
-          <div className="section-heading">
-            <p>01</p>
-            <h2>About</h2>
-          </div>
-          <div className="section-body prose">
-            <p>
-              I am an Integrated M.S.-Ph.D. student at DGIST under the
-              supervision of Prof. Jeongho Kwak (DGIST / Korea University) in
-              the Intelligent Computing &amp; Networking Laboratory, after
-              receiving my B.S. from DGIST in 2022.
-            </p>
-            <p>
-              My research focuses on intelligent wireless and non-terrestrial
-              networks, including joint communication, onboard computing, and
-              routing, battery-aware resource management, and learning-based
-              control. I also study network-compute load balancing for connected
-              and autonomous vehicles.
-            </p>
-          </div>
-        </section>
-
-        <section className="section-grid" id="education">
-          <div className="section-heading">
-            <p>02</p>
-            <h2>Education</h2>
-          </div>
-          <div className="timeline">
-            <article>
-              <p className="timeline-date">March 2022 – Present</p>
-              <h3>Integrated M.S.-Ph.D. Program</h3>
-              <p>Electrical Engineering &amp; Computer Science, DGIST</p>
-              <p className="timeline-meta">
-                Advisor: Prof. Jeongho Kwak (DGIST / Korea University)
-              </p>
-            </article>
-            <article>
-              <p className="timeline-date">March 2017 – February 2022</p>
-              <h3>B.S.</h3>
-              <p>Daegu Gyeongbuk Institute of Science &amp; Technology (DGIST)</p>
-            </article>
-          </div>
-        </section>
-
-        <section className="section-grid" id="research">
-          <div className="section-heading">
-            <p>03</p>
-            <h2>Research Interests</h2>
-          </div>
-          <ol className="interest-list">
-            {researchInterests.map((interest, index) => (
-              <li key={interest}>
-                <span>0{index + 1}</span>
-                <p>{interest}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="section-grid" id="honors">
-          <div className="section-heading">
-            <p>04</p>
-            <h2>Honors</h2>
-          </div>
-          <div className="honor-card">
-            <p className="eyebrow">Scholarship</p>
-            <h3>Korea Government Full Scholarship</h3>
-            <p>Eight consecutive undergraduate semesters.</p>
-          </div>
-        </section>
-
-        <section className="section-grid section-records" id="publications">
-          <div className="section-heading">
-            <p>05</p>
-            <h2>Publications</h2>
-          </div>
-          <div className="record-groups">
-            {publicationGroups.map((group) => (
-              <section className="record-group" key={group.label}>
-                <h3>{group.label}</h3>
-                <RecordList items={group.items} />
-              </section>
-            ))}
-          </div>
-        </section>
-
-        <section className="section-grid section-records" id="patents">
-          <div className="section-heading">
-            <p>06</p>
-            <h2>Patents &amp; Software</h2>
-          </div>
-          <div className="record-groups">
-            {patentGroups.map((group) => (
-              <section className="record-group" key={group.label}>
-                <h3>{group.label}</h3>
-                <RecordList items={group.items} />
-              </section>
-            ))}
-            <section className="record-group">
-              <h3>Software</h3>
-              <RecordList items={softwareItems} />
-            </section>
-          </div>
-        </section>
-
-        <section className="section-grid" id="projects">
-          <div className="section-heading">
-            <p>07</p>
-            <h2>Projects</h2>
-          </div>
-          <div className="project-list">
-            {projects.map((project) => (
-              <article key={project.title}>
-                <div>
-                  <span>{project.agency}</span>
-                  <span>Researcher</span>
-                </div>
-                <h3 lang="ko">{project.title}</h3>
-                <p>{project.period}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section-grid" id="service">
-          <div className="section-heading">
-            <p>08</p>
-            <h2>Professional Service</h2>
-          </div>
-          <div className="service-grid">
-            {serviceGroups.map((group) => (
-              <section key={group.label}>
-                <p className="eyebrow">Reviewer · {group.label}</p>
-                <ul>
-                  {group.venues.map((venue) => (
-                    <li key={venue}>{venue}</li>
-                  ))}
+      <section id="footer">
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <div id="copyright">
+                <ul className="links">
+                  <li>&copy; 2026 Jeonghwan Kim. All rights reserved.</li>
+                  <li>
+                    Design: <a href="https://html5up.net">HTML5 UP</a>
+                  </li>
                 </ul>
-              </section>
-            ))}
+              </div>
+            </div>
           </div>
-        </section>
-
-        <section className="section-grid" id="skills">
-          <div className="section-heading">
-            <p>09</p>
-            <h2>Skills</h2>
-          </div>
-          <ul className="skills-list">
-            {skills.map((skill, index) => (
-              <li key={skill}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                {skill}
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="contact-strip" id="contact">
-          <div>
-            <p className="eyebrow">Contact</p>
-            <h2>Research conversations are welcome.</h2>
-            <address>
-              No. 507B, Woojung Hall of Informatics, Korea University<br />
-              145 Anam-ro, Seongbuk-gu, Seoul, South Korea
-            </address>
-          </div>
-          <div className="contact-links">
-            <a href="mailto:ghks9876@dgist.ac.kr">ghks9876@dgist.ac.kr</a>
-            <a href="https://icnl.korea.ac.kr/" target="_blank" rel="noreferrer">
-              Intelligent Computing &amp; Networking Laboratory ↗
-            </a>
-          </div>
-        </section>
-      </div>
-
-      <footer>
-        <p>© 2026 Jeonghwan Kim</p>
-        <a href="#top">Back to top ↑</a>
-      </footer>
-    </main>
+        </div>
+      </section>
+    </div>
   );
 }
