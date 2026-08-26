@@ -331,12 +331,39 @@ function highlightName(text: string) {
     );
 }
 
+function formatAuthors(text: string) {
+  const authors = text
+    .split(";")
+    .map((author) => author.trim())
+    .filter(Boolean);
+
+  return authors.map((author, index) => {
+    let separator = "";
+
+    if (index > 0) {
+      separator =
+        authors.length === 2
+          ? " and "
+          : index === authors.length - 1
+            ? ", and "
+            : ", ";
+    }
+
+    return (
+      <Fragment key={`${author}-${index}`}>
+        {separator}
+        {highlightName(author)}
+      </Fragment>
+    );
+  });
+}
+
 function RecordList({ items }: { items: RecordItem[] }) {
   return (
     <ol className="pub-list">
       {items.map((item) => (
         <li key={`${item.title}-${item.detail}`}>
-          {item.authors && <>{highlightName(item.authors)}, </>}
+          {item.authors && <>{formatAuthors(item.authors)}, </>}
           &ldquo;{item.title},&rdquo; {item.detail}
           {item.highlight && (
             <>
